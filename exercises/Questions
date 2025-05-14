@@ -3,3 +3,9 @@ Q1. Explain the meaning of the following strings that seen at the beginning of e
 '+' - The resource or attribute is going to be added
 '-' - the resource or attribute is going to be removed
 '-/+' - the resource or attribute is going to be replaced
+------------------------------------------------------------------------------------------------------------------
+
+Q2. Sometimes you need to reference some resources in the same or separate .tf file. Why and how it's done?
+
+Why: because resources are sometimes connected or need to be connected. For example, you create an AWS instance with "aws_instance" resource but, at the same time you would like also to allow some traffic to it (because by default traffic is not allowed). For that you'll create a "aws_security_group" resource and then, in your aws_instance resource, you'll reference it.
+--------------------------------------------------------------------------------------------------------------------
