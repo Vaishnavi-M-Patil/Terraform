@@ -32,7 +32,7 @@ It declares input variables that can be used throughout your Terraform configura
 It contains Variable names, types, default values, and descriptions.
 It is not compulsory for the variable block to be present in variables.tf file. It can be present in any tf file. 
 
-```hcl
+```
 Example:
 variable "instance_type" {
   description = "EC2 instance type"
