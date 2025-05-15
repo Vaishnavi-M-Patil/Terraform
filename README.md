@@ -47,3 +47,16 @@ Example:
 ```hcl
 instance_type = "t3.small"
 ```
+
+## .terraform.lock.hcl file:
+The .terraform.lock.hcl file is automatically created and updated by Terraform during terraform init. It records exact provider versions, registries, and checksums to ensure consistent and secure dependency management.
+It's recommended to include the lock file in your version control repository to ensure that everyone on your team uses the same provider versions. 
+
+## .terraform folder:
+The .terraform folder in a Terraform project is a hidden directory where Terraform stores local, temporary files and configurations that are not intended for version control. It's created when you initialize a Terraform project using the terraform init command.
+It can include:
+<b>Plugin binaries:</b> Providers (e.g., aws, azurerm) that Terraform downloads.
+Module cache: Cached versions of modules you've used (especially remote ones).
+Terraform state backup: Temporary or local backups of your .tfstate file (depending on the backend).
+Environment data: When using workspaces, it may store data specific to them.
+
