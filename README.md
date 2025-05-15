@@ -56,8 +56,12 @@ It's recommended to include the lock file in your version control repository to 
 The .terraform folder in a Terraform project is a hidden directory where Terraform stores local, temporary files and configurations that are not intended for version control. It's created when you initialize a Terraform project using the terraform init command.
 
 It can include:
+
 <b>Plugin binaries:</b> Providers (e.g., aws, azurerm) that Terraform downloads.
-Module cache: Cached versions of modules you've used (especially remote ones).
-Terraform state backup: Temporary or local backups of your .tfstate file (depending on the backend).
-Environment data: When using workspaces, it may store data specific to them.
+
+<b>Module cache:</b> Cached versions of modules you've used (especially remote ones).
+
+<b>Terraform state backup:</b> Temporary or local backups of your .tfstate file (depending on the backend).
+
+<b>Environment data:</b> When using workspaces, it may store data specific to them.
 
