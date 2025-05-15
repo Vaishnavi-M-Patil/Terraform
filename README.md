@@ -75,7 +75,9 @@ It should be added to .gitignore.
 The terraform.tfstate.backup file is an automatic backup of the previous terraform.tfstate file that Terraform creates each time you run a command that modifies the state, such as:
 ```
 terraform apply
-terraform destroy.
+```
+```
+terraform destroy
 ```
 If something goes wrong during the state update (like an error in resource creation), this backup can help you recover.
 If your terraform.tfstate file becomes corrupted or unusable, you can manually recover the backup.
