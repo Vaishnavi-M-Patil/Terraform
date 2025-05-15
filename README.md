@@ -32,8 +32,8 @@ It declares input variables that can be used throughout your Terraform configura
 It contains Variable names, types, default values, and descriptions.
 It is not compulsory for the variable block to be present in variables.tf file. It can be present in any tf file. 
 
-```
 Example:
+```hcl
 variable "instance_type" {
   description = "EC2 instance type"
   type        = string
@@ -44,5 +44,6 @@ variable "instance_type" {
 It provides actual values for the variables declared in variables.tf.
 It is used for assigning or overriding values during execution.
 Example:
+```hcl
 instance_type = "t3.small"
-
+```
