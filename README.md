@@ -4,8 +4,11 @@ Terraform is an open-source Infrastructure as Code (IaC) tool developed by Hashi
 
 ## Key Features:
 Infrastructure as Code (IaC): You write code to define cloud and on-prem resources like VMs, networks, databases, etc.
+
 Platform Agnostic: Works with many providers such as AWS, Azure, Google Cloud, VMware, and even on-prem tools via plugins called providers. You can write the same infrastructure-as-code logic to manage multi-cloud or hybrid-cloud environments without switching tools.
+
 Declarative Language: You declare what infrastructure you want, and Terraform figures out how to create/update/delete it.
+
 Execution Plan: Shows what actions will be taken before making any changes, reducing the risk of errors.
 State Management: Maintains a state file to track real-world resource states and detect drift.
 
