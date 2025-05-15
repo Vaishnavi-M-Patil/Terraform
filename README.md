@@ -65,3 +65,21 @@ It can include:
 
 <b>Environment data:</b> When using workspaces, it may store data specific to them.
 
+## What is terraform.tfstate?
+The terraform.tfstate file in Terraform is a  JSON-formatted file that stores the state of your infrastructure, mapping your configuration to the resources created in your cloud provider.
+It is an important file which contains information about the infrastructure that you have created.
+By default, it's stored locally in the root directory of your Terraform project as a JSON file named terraform.tfstate. But for collaboration purposes it is securely stored on s3 or dynamoDB service of aws.
+It should be added to .gitignore.
+
+## What is terraform.tfstate.backup?
+The terraform.tfstate.backup file is an automatic backup of the previous terraform.tfstate file that Terraform creates each time you run a command that modifies the state, such as:
+```
+terraform apply
+terraform destroy.
+```
+If something goes wrong during the state update (like an error in resource creation), this backup can help you recover.
+If your terraform.tfstate file becomes corrupted or unusable, you can manually recover the backup.
+```
+cp terraform.tfstate.backup terraform.tfstate
+```
+This tells Terraform to revert to the previous state.
