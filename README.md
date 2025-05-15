@@ -25,3 +25,23 @@ This will create the most important file that contains all the information of yo
 ### terraform destroy – 
 This command will delete all the created infrastructure
 Terraform refers terraform.tfstate file to check all infra and then delete that infra.
+
+## What is the difference between variables.tf and terraform .tfvars?
+## Ans:
+### variables.tf file:(declaration)
+It declares input variables that can be used throughout your Terraform configuration.
+It contains Variable names, types, default values, and descriptions.
+It is not compulsory for the variable block to be present in variables.tf file. It can be present in any tf file. 
+Example:
+variable "instance_type" {
+  description = "EC2 instance type"
+  type        = string
+  default     = "t2.micro"
+}
+
+### terraform.tfvars:(assignment)
+It provides actual values for the variables declared in variables.tf.
+It is used for assigning or overriding values during execution.
+Example:
+instance_type = "t3.small"
+
