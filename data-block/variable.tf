@@ -1,10 +1,6 @@
-variable "instanceType" {
-    default = "t2.micro"
-}
+variable "instanceType" {}
 
-variable "ami" {
-    default = "ami-0f9de6e2d2f067fca"
-}
+variable "ami" {}
 
 variable "security_group" {}
 
