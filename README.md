@@ -3,15 +3,15 @@
 Terraform is an open-source Infrastructure as Code (IaC) tool developed by HashiCorp. It allows you to define, provision, and manage infrastructure using a high-level configuration language called HashiCorp Configuration Language (HCL) or optionally JSON.
 
 ## Key Features:
-**- Infrastructure as Code (IaC):** You write code to define cloud and on-prem resources like VMs, networks, databases, etc.
+- **Infrastructure as Code (IaC):** You write code to define cloud and on-prem resources like VMs, networks, databases, etc.
 
-**- Platform Agnostic:** Works with many providers such as AWS, Azure, Google Cloud, VMware, and even on-prem tools via plugins called providers. You can write the same infrastructure-as-code logic to manage multi-cloud or hybrid-cloud environments without switching tools.
+- **Platform Agnostic:** Works with many providers such as AWS, Azure, Google Cloud, VMware, and even on-prem tools via plugins called providers. You can write the same infrastructure-as-code logic to manage multi-cloud or hybrid-cloud environments without switching tools.
 
-**- Declarative Language:** You declare what infrastructure you want, and Terraform figures out how to create/update/delete it.
+- **Declarative Language:** You declare what infrastructure you want, and Terraform figures out how to create/update/delete it.
 
-**- Execution Plan:** Shows what actions will be taken before making any changes, reducing the risk of errors.
+- **Execution Plan:** Shows what actions will be taken before making any changes, reducing the risk of errors.
 
-**- State Management:** Maintains a state file to track real-world resource states and detect drift.
+- **State Management:** Maintains a state file to track real-world resource states and detect drift.
 
 ## Common Terraform Commands / terraform lifecycle: 
 ### terraform init -
@@ -58,13 +58,13 @@ The .terraform folder in a Terraform project is a hidden directory where Terrafo
 
 It can include:
 
-**- Plugin binaries:** Providers (e.g., aws, azurerm) that Terraform downloads.
+- **Plugin binaries:** Providers (e.g., aws, azurerm) that Terraform downloads.
 
-**- Module cache:** Cached versions of modules you've used (especially remote ones).
+- **Module cache:** Cached versions of modules you've used (especially remote ones).
 
-**- Terraform state backup:** Temporary or local backups of your .tfstate file (depending on the backend).
+- **Terraform state backup:** Temporary or local backups of your .tfstate file (depending on the backend).
 
-**- Environment data:** When using workspaces, it may store data specific to them.
+- **Environment data:** When using workspaces, it may store data specific to them.
 
 ## What is terraform.tfstate?
 The terraform.tfstate file in Terraform is a JSON-formatted file that stores the state of your infrastructure, mapping your configuration to the resources created in your cloud provider.
@@ -93,18 +93,18 @@ A module is a container for multiple resources that are used together. Modules h
 
 #### Modules can be:
 
-**- Root module:** Your main Terraform configuration (the directory where you run terraform apply).
+- **Root module:** Your main Terraform configuration (the directory where you run terraform apply).
 
-**- Child module:** A module that is called from another module using the module block.
+- **Child module:** A module that is called from another module using the module block.
 
 ### Why Use Modules?
-**- Reusability:** Write once, use many times.
+- **Reusability:** Write once, use many times.
 
-**- Organization:** Break large configs into manageable parts.
+- **Organization:** Break large configs into manageable parts.
 
-**- Maintainability:** Easier updates and changes.
+- **Maintainability:** Easier updates and changes.
 
-**- Abstraction:** Hide implementation details and expose inputs/outputs.
+- **Abstraction:** Hide implementation details and expose inputs/outputs.
 
 ### Example:
 Suppose you have a child module in a folder modules/s3_bucket:
@@ -140,11 +140,11 @@ variable "bucket_name" {
 Provisioners in Terraform are used to execute scripts or commands on a local machine or a remote resource (like an EC2 instance) after it is created or destroyed.
 
 ### Types of provisioners:
-**- file:** Copies files or directories to the remote machine.
+- **file:** Copies files or directories to the remote machine.
 
-**- local-exec:** Runs a command on the machine where Terraform is run.
+- **local-exec:** Runs a command on the machine where Terraform is run.
 
-**- remote-exec:** Runs a command on the remote resource via SSH or WinRM.
+- **remote-exec:** Runs a command on the remote resource via SSH or WinRM.
 
 ## Terraform import:
 **terraform import** — (Bringing Existing Infrastructure into Terraform)
