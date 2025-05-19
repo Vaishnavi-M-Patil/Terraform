@@ -85,3 +85,96 @@ If your terraform.tfstate file becomes corrupted or unusable, you can manually r
 cp terraform.tfstate.backup terraform.tfstate
 ```
 This tells Terraform to revert to the previous state.
+
+
+## Modules:
+A module is a container for multiple resources that are used together. Modules help organize and reuse code in a clean, maintainable, and scalable way.
+
+Modules can be:
+Root module: Your main Terraform configuration (the directory where you run terraform apply).
+
+Child module: A module that is called from another module using the module block.
+
+### Why Use Modules?
+Reusability: Write once, use many times.
+
+Organization: Break large configs into manageable parts.
+
+Maintainability: Easier updates and changes.
+
+Abstraction: Hide implementation details and expose inputs/outputs.
+
+### Example:
+Suppose you have a child module in a folder modules/s3_bucket:
+
+modules/s3_bucket/main.tf
+```hcl
+resource "aws_s3_bucket" "example" {
+  bucket = var.bucket_name
+  acl    = "private"
+}
+```
+modules/s3_bucket/variables.tf
+```hcl
+variable "bucket_name" {
+  type = string
+}
+```
+Root module (main.tf)
+```hcl
+module "my_bucket" {
+  source      = "./modules/s3_bucket"
+  bucket_name = var.bucket_name
+}
+```
+Root module (variable.tf)
+```hcl
+variable "bucket_name" {
+  default = "my-app-bucket"
+}
+```
+
+## Provisioners:
+Provisioners in Terraform are used to execute scripts or commands on a local machine or a remote resource (like an EC2 instance) after it is created or destroyed.
+
+### Types of provisioners:
+file: Copies files or directories to the remote machine.
+
+local-exec: Runs a command on the machine where Terraform is run.
+
+remote-exec: Runs a command on the remote resource via SSH or WinRM.
+
+## Terraform import:
+terraform import — (Bringing Existing Infrastructure into Terraform)
+
+The terraform import command is used to bring existing cloud resources (e.g., AWS EC2, S3, etc.) under Terraform management without recreating them.
+
+### Why Use terraform import?
+- Manage manually created or legacy infrastructure using Terraform.
+- Avoid destroying/recreating live resources.
+- Start infrastructure as code (IaC) with existing setups.
+
+### Syntax:
+```
+terraform import <RESOURCE_TYPE.REFERENCE_NAME> <RESOURCE_ID>
+```
+### Example:
+Suppose you have an EC2 instance with ID i-0abcd1234ef56789.
+
+Define the resource in your .tf file:
+```hcl
+resource "aws_instance" "example" {
+  # Leave empty for now, will populate after import
+}
+```
+
+### Import the resource:
+```hcl
+terraform import aws_instance.example i-0abcd1234ef56789
+```
+Run terraform plan to inspect the state and then update the .tf file to match the imported resource.
+### Notes:
+- Import adds the resource to Terraform's state, but not automatically to .tf files.
+- You must manually write the configuration to match the imported resource.
+- You can only import one resource at a time (but automation scripts can help).
+- If the .tf configuration doesn't match the actual resource, Terraform may try to change or recreate it.
