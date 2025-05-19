@@ -90,7 +90,8 @@ This tells Terraform to revert to the previous state.
 ## Modules:
 A module is a container for multiple resources that are used together. Modules help organize and reuse code in a clean, maintainable, and scalable way.
 
-Modules can be:
+#### Modules can be:
+
 Root module: Your main Terraform configuration (the directory where you run terraform apply).
 
 Child module: A module that is called from another module using the module block.
@@ -178,3 +179,7 @@ Run terraform plan to inspect the state and then update the .tf file to match th
 - You must manually write the configuration to match the imported resource.
 - You can only import one resource at a time (but automation scripts can help).
 - If the .tf configuration doesn't match the actual resource, Terraform may try to change or recreate it.
+
+
+## Why is Terraform State Locking important?-
+It prevents Terraform state file(terraform.tfstate) from accidental updates by putting a lock on file so that the current update can be finished before processing the new change. The feature of Terraform state locking is supported by AWS S3 and DynamoDB.
