@@ -184,3 +184,37 @@ Run terraform plan to inspect the state and then update the .tf file to match th
 
 ## Why is Terraform State Locking important?-
 It prevents Terraform state file(terraform.tfstate) from accidental updates by putting a lock on file so that the current update can be finished before processing the new change. The feature of Terraform state locking is supported by AWS S3 and DynamoDB.
+
+## terraform init -reconfigure:
+- It is used to force reinitialization of the Terraform backend.
+- It is required when you change backend settings manually.
+
+## Backend block inside terraform block:
+```hcl
+terraform {
+  backend "s3" {
+    bucket = aws_s3_bucket.buckets3.bucket  # ❌ Not allowed
+    key    = "state/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+```
+
+- The terraform { backend {} } block configures where Terraform stores state (e.g., S3, local, etc.).
+- Backend configuration must use only static values — no variables, no resource references, and no expressions.
+- This is because Terraform loads the backend before evaluating the rest of the configuration (providers/resources).
+```hcl
+This is the correct way of backend block:
+terraform {
+  backend "s3" {
+    bucket = "my-terraform-state-bucket"
+    key    = "env/dev/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+```
+
+## What is a data block in Terraform?
+In Terraform, a data block is used to read or fetch existing resources that were not created by your Terraform configuration, but that you want to reference or use.
+
+
