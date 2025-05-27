@@ -179,7 +179,10 @@ Run terraform plan to inspect the state and then update the .tf file to match th
 - Import adds the resource to Terraform's state, but not automatically to .tf files.
 - You must manually write the configuration to match the imported resource.
 - You can only import one resource at a time (but automation scripts can help).
-- If the .tf configuration doesn't match the actual resource, Terraform may try to change or recreate it.
+- If the .tf configuration doesn't match the actual resource, Terraform may try to change or recreate it.  
+Q. State two use cases where you would use terraform import
+   - You have existing resources in one of the providers and they are not managed by Terraform (as in not included in the state)
+    - You lost your tfstate file and need to rebuild it
 
 ## terraform init -reconfigure:
 - It is used to force reinitialization of the Terraform backend.
